@@ -62,34 +62,34 @@
           },
           keyframes: {
             pop: {
-              '0%': { transform: 'scale(1)' },
-              '45%': { transform: 'scale(1.12)' },
-              '100%': { transform: 'scale(1)' },
+              '0%': { transform: 'translate3d(0,0,0) scale(1)' },
+              '45%': { transform: 'translate3d(0,0,0) scale(1.12)' },
+              '100%': { transform: 'translate3d(0,0,0) scale(1)' },
             },
             fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(8px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
+              '0%': { opacity: '0', transform: 'translate3d(0, 10px, 0)' },
+              '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' },
             },
             slidePush: {
-              '0%': { opacity: '0', transform: 'translateX(14px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' },
+              '0%': { opacity: '0', transform: 'translate3d(18px, 0, 0)' },
+              '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' },
             },
             slidePop: {
-              '0%': { opacity: '0', transform: 'translateX(-14px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' },
+              '0%': { opacity: '0', transform: 'translate3d(-18px, 0, 0)' },
+              '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' },
             },
             sheetUp: {
-              '0%': { opacity: '0', transform: 'translateY(22px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
+              '0%': { opacity: '0', transform: 'translate3d(0, 28px, 0)' },
+              '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' },
             },
             modalZoom: {
-              '0%': { opacity: '0', transform: 'scale(0.97) translateY(6px)' },
-              '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+              '0%': { opacity: '0', transform: 'translate3d(0, 8px, 0) scale(0.97)' },
+              '100%': { opacity: '1', transform: 'translate3d(0, 0, 0) scale(1)' },
             },
             successRing: {
-              '0%': { transform: 'scale(0.8)', opacity: '0' },
-              '70%': { transform: 'scale(1.04)', opacity: '1' },
-              '100%': { transform: 'scale(1)', opacity: '1' },
+              '0%': { transform: 'translate3d(0,0,0) scale(0.8)', opacity: '0' },
+              '70%': { transform: 'translate3d(0,0,0) scale(1.04)', opacity: '1' },
+              '100%': { transform: 'translate3d(0,0,0) scale(1)', opacity: '1' },
             },
             checkDraw: {
               '0%': { strokeDashoffset: '48' },
@@ -97,13 +97,13 @@
             }
           },
           animation: {
-            'pop': 'pop 0.22s cubic-bezier(0.22, 1, 0.36, 1)',
-            'fade-up': 'fadeUp 0.22s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-            'slide-push': 'slidePush 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-            'slide-pop': 'slidePop 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-            'sheet-up': 'sheetUp 0.26s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-            'modal-zoom': 'modalZoom 0.22s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-            'success-ring': 'successRing 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+            'pop': 'pop 0.24s cubic-bezier(0.22, 1, 0.36, 1) both',
+            'fade-up': 'fadeUp 0.26s cubic-bezier(0.22, 1, 0.36, 1) both',
+            'slide-push': 'slidePush 0.28s cubic-bezier(0.22, 1, 0.36, 1) both',
+            'slide-pop': 'slidePop 0.28s cubic-bezier(0.22, 1, 0.36, 1) both',
+            'sheet-up': 'sheetUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) both',
+            'modal-zoom': 'modalZoom 0.24s cubic-bezier(0.22, 1, 0.36, 1) both',
+            'success-ring': 'successRing 0.36s cubic-bezier(0.22, 1, 0.36, 1) both',
             'check-draw': 'checkDraw 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards',
           }
         }
@@ -171,12 +171,160 @@
       overflow: hidden;
     }
 
-    /* Restrained, tactile feedback */
+    /* Native Keyframes with -webkit- prefixes for Safari iOS & Android Chrome */
+    @-webkit-keyframes ztgPageFadeUp {
+      0% { opacity: 0; -webkit-transform: translate3d(0, 12px, 0); transform: translate3d(0, 12px, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+    @keyframes ztgPageFadeUp {
+      0% { opacity: 0; -webkit-transform: translate3d(0, 12px, 0); transform: translate3d(0, 12px, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+
+    @-webkit-keyframes ztgPageSlidePush {
+      0% { opacity: 0; -webkit-transform: translate3d(20px, 0, 0); transform: translate3d(20px, 0, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+    @keyframes ztgPageSlidePush {
+      0% { opacity: 0; -webkit-transform: translate3d(20px, 0, 0); transform: translate3d(20px, 0, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+
+    @-webkit-keyframes ztgPageSlidePop {
+      0% { opacity: 0; -webkit-transform: translate3d(-20px, 0, 0); transform: translate3d(-20px, 0, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+    @keyframes ztgPageSlidePop {
+      0% { opacity: 0; -webkit-transform: translate3d(-20px, 0, 0); transform: translate3d(-20px, 0, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+
+    @-webkit-keyframes ztgSheetSlideUp {
+      0% { opacity: 0; -webkit-transform: translate3d(0, 32px, 0); transform: translate3d(0, 32px, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+    @keyframes ztgSheetSlideUp {
+      0% { opacity: 0; -webkit-transform: translate3d(0, 32px, 0); transform: translate3d(0, 32px, 0); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    }
+
+    @-webkit-keyframes ztgModalZoomIn {
+      0% { opacity: 0; -webkit-transform: translate3d(0, 10px, 0) scale(0.96); transform: translate3d(0, 10px, 0) scale(0.96); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0) scale(1); transform: translate3d(0, 0, 0) scale(1); }
+    }
+    @keyframes ztgModalZoomIn {
+      0% { opacity: 0; -webkit-transform: translate3d(0, 10px, 0) scale(0.96); transform: translate3d(0, 10px, 0) scale(0.96); }
+      100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0) scale(1); transform: translate3d(0, 0, 0) scale(1); }
+    }
+
+    @-webkit-keyframes ztgControlPop {
+      0% { -webkit-transform: translate3d(0,0,0) scale(1); transform: translate3d(0,0,0) scale(1); }
+      45% { -webkit-transform: translate3d(0,0,0) scale(1.1); transform: translate3d(0,0,0) scale(1.1); }
+      100% { -webkit-transform: translate3d(0,0,0) scale(1); transform: translate3d(0,0,0) scale(1); }
+    }
+    @keyframes ztgControlPop {
+      0% { -webkit-transform: translate3d(0,0,0) scale(1); transform: translate3d(0,0,0) scale(1); }
+      45% { -webkit-transform: translate3d(0,0,0) scale(1.1); transform: translate3d(0,0,0) scale(1.1); }
+      100% { -webkit-transform: translate3d(0,0,0) scale(1); transform: translate3d(0,0,0) scale(1); }
+    }
+
+    @-webkit-keyframes ztgNavIconBounce {
+      0% { -webkit-transform: translate3d(0,0,0) scale(0.88); transform: translate3d(0,0,0) scale(0.88); }
+      55% { -webkit-transform: translate3d(0,-2px,0) scale(1.08); transform: translate3d(0,-2px,0) scale(1.08); }
+      100% { -webkit-transform: translate3d(0,0,0) scale(1); transform: translate3d(0,0,0) scale(1); }
+    }
+    @keyframes ztgNavIconBounce {
+      0% { -webkit-transform: translate3d(0,0,0) scale(0.88); transform: translate3d(0,0,0) scale(0.88); }
+      55% { -webkit-transform: translate3d(0,-2px,0) scale(1.08); transform: translate3d(0,-2px,0) scale(1.08); }
+      100% { -webkit-transform: translate3d(0,0,0) scale(1); transform: translate3d(0,0,0) scale(1); }
+    }
+
+    /* GPU-Accelerated Page & Overlay Animation Classes */
+    .animate-fade-up {
+      -webkit-animation: ztgPageFadeUp 0.28s var(--ease-natural) both;
+      animation: ztgPageFadeUp 0.28s var(--ease-natural) both;
+      will-change: transform, opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .animate-slide-push {
+      -webkit-animation: ztgPageSlidePush 0.3s var(--ease-natural) both;
+      animation: ztgPageSlidePush 0.3s var(--ease-natural) both;
+      will-change: transform, opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .animate-slide-pop {
+      -webkit-animation: ztgPageSlidePop 0.3s var(--ease-natural) both;
+      animation: ztgPageSlidePop 0.3s var(--ease-natural) both;
+      will-change: transform, opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .animate-sheet-up {
+      -webkit-animation: ztgSheetSlideUp 0.32s var(--ease-sheet) both;
+      animation: ztgSheetSlideUp 0.32s var(--ease-sheet) both;
+      will-change: transform, opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .animate-modal-zoom {
+      -webkit-animation: ztgModalZoomIn 0.25s var(--ease-natural) both;
+      animation: ztgModalZoomIn 0.25s var(--ease-natural) both;
+      will-change: transform, opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .animate-pop {
+      -webkit-animation: ztgControlPop 0.24s var(--ease-natural) both;
+      animation: ztgControlPop 0.24s var(--ease-natural) both;
+    }
+
+    @media (min-width: 768px) {
+      .tablet\:animate-modal-zoom {
+        -webkit-animation: ztgModalZoomIn 0.25s var(--ease-natural) both;
+        animation: ztgModalZoomIn 0.25s var(--ease-natural) both;
+      }
+    }
+
+    /* Smooth Modal & Sheet Exit Transitions */
+    .ztg-overlay-closing {
+      opacity: 0 !important;
+      -webkit-transition: opacity 0.2s ease !important;
+      transition: opacity 0.2s ease !important;
+    }
+    .ztg-sheet-closing {
+      opacity: 0 !important;
+      -webkit-transform: translate3d(0, 26px, 0) !important;
+      transform: translate3d(0, 26px, 0) !important;
+      -webkit-transition: opacity 0.2s ease, -webkit-transform 0.22s var(--ease-sheet) !important;
+      transition: opacity 0.2s ease, transform 0.22s var(--ease-sheet) !important;
+    }
+    .ztg-modal-closing {
+      opacity: 0 !important;
+      -webkit-transform: translate3d(0, 8px, 0) scale(0.96) !important;
+      transform: translate3d(0, 8px, 0) scale(0.96) !important;
+      -webkit-transition: opacity 0.18s ease, -webkit-transform 0.2s var(--ease-natural) !important;
+      transition: opacity 0.18s ease, transform 0.2s var(--ease-natural) !important;
+    }
+
+    /* Restrained, tactile feedback for mobile touch & desktop click */
     .btn-tactile,
     button:not(:disabled),
     a[href] {
+      -webkit-transition:
+        -webkit-transform 0.15s var(--ease-natural),
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
       transition:
-        transform 0.14s var(--ease-natural),
+        transform 0.15s var(--ease-natural),
         background-color 0.18s ease,
         border-color 0.18s ease,
         color 0.18s ease,
@@ -187,49 +335,87 @@
     button:not(:disabled):active,
     a[href]:active,
     .is-pressing {
-      transform: scale(0.98) !important;
+      -webkit-transform: translate3d(0,0,0) scale(0.97) !important;
+      transform: translate3d(0,0,0) scale(0.97) !important;
     }
 
     .card-tactile {
+      -webkit-transition:
+        -webkit-transform 0.18s var(--ease-natural),
+        box-shadow 0.2s ease,
+        border-color 0.18s ease;
       transition:
-        transform 0.16s var(--ease-natural),
+        transform 0.18s var(--ease-natural),
         box-shadow 0.2s ease,
         border-color 0.18s ease;
     }
 
     .card-tactile:active,
     .card-tactile.is-pressing {
-      transform: scale(0.99) !important;
+      -webkit-transform: translate3d(0,0,0) scale(0.985) !important;
+      transform: translate3d(0,0,0) scale(0.985) !important;
     }
 
     img {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
+      -webkit-transform: translateZ(0);
       transform: translateZ(0);
     }
 
-    /* Bottom Navigation */
+    /* Bottom Navigation Active Pill & Icon Transitions */
     .mobile-nav-btn .nav-pill {
+      -webkit-transition:
+        background-color 0.22s var(--ease-natural),
+        color 0.22s ease,
+        -webkit-transform 0.22s var(--ease-natural);
       transition:
-        background-color 0.18s ease,
-        color 0.18s ease;
+        background-color 0.22s var(--ease-natural),
+        color 0.22s ease,
+        transform 0.22s var(--ease-natural);
+    }
+
+    .mobile-nav-btn .nav-label {
+      -webkit-transition: color 0.2s ease, -webkit-transform 0.2s var(--ease-natural);
+      transition: color 0.2s ease, transform 0.2s var(--ease-natural);
+    }
+
+    .mobile-nav-btn[aria-current="page"] .nav-pill svg {
+      -webkit-animation: ztgNavIconBounce 0.34s var(--ease-natural) both;
+      animation: ztgNavIconBounce 0.34s var(--ease-natural) both;
     }
 
     /* Smooth Cart Row Exit */
     .cart-item-removing {
       opacity: 0 !important;
-      transform: translateX(18px) !important;
+      -webkit-transform: translate3d(20px, 0, 0) !important;
+      transform: translate3d(20px, 0, 0) !important;
+      -webkit-transition: opacity 0.18s ease, -webkit-transform 0.2s var(--ease-natural) !important;
       transition: opacity 0.18s ease, transform 0.2s var(--ease-natural) !important;
     }
 
     /* Sheet & Backdrop Transitions */
     .ios-backdrop {
-      transition: opacity 0.22s ease;
+      -webkit-transition: opacity 0.24s ease;
+      transition: opacity 0.24s ease;
+      will-change: opacity;
     }
 
     .ios-drawer-panel {
-      transition: transform 0.28s var(--ease-sheet);
+      -webkit-transition: -webkit-transform 0.3s var(--ease-sheet);
+      transition: transform 0.3s var(--ease-sheet);
       will-change: transform;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    /* Floating Cart Bar GPU Transition */
+    #floating-cart-bar {
+      -webkit-transition: -webkit-transform 0.28s var(--ease-natural), opacity 0.22s ease;
+      transition: transform 0.28s var(--ease-natural), opacity 0.22s ease;
+      will-change: transform, opacity;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
     .no-scrollbar::-webkit-scrollbar {
@@ -267,7 +453,8 @@
 
     /* Smooth collapsible search bar on mobile scroll */
     .mobile-search-collapse {
-      transition: max-height 0.22s var(--ease-natural), opacity 0.18s ease, margin-top 0.22s ease;
+      -webkit-transition: max-height 0.24s var(--ease-natural), opacity 0.18s ease, margin-top 0.24s ease;
+      transition: max-height 0.24s var(--ease-natural), opacity 0.18s ease, margin-top 0.24s ease;
       max-height: 52px;
       opacity: 1;
       overflow: hidden;
@@ -303,19 +490,24 @@
       outline-offset: 2px;
     }
 
+    /* Scoped reduced-motion rule: preserves essential UI feedback & drawer/modal transitions
+       while gently minimizing decorative motion only when the OS explicitly requests it */
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      .animate-fade-up,
+      .animate-slide-push,
+      .animate-slide-pop,
+      .animate-sheet-up,
+      .animate-modal-zoom,
+      .animate-pop,
+      .mobile-nav-btn[aria-current="page"] .nav-pill svg {
+        -webkit-animation-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
       }
       .btn-tactile:active:not(:disabled),
       button:not(:disabled):active,
       .card-tactile:active,
       .is-pressing {
+        -webkit-transform: none !important;
         transform: none !important;
       }
     }
@@ -323,17 +515,21 @@
     /* ===================== ZATPATGO PREMIUM SPLASH (≈3.4s) ===================== */
     #ztg-splash{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
       background:radial-gradient(120% 90% at 50% 42%,#5426C8 0%,#3E1A9E 55%,#321078 100%);
+      -webkit-clip-path:circle(150% at 50% 46%);
       clip-path:circle(150% at 50% 46%);
+      -webkit-animation:ztgIris .62s cubic-bezier(.76,0,.24,1) 2.8s forwards;
       animation:ztgIris .62s cubic-bezier(.76,0,.24,1) 2.8s forwards;
       -webkit-user-select:none;user-select:none;cursor:pointer}
-    #ztg-splash.ztg-skip{animation:ztgFade .3s ease forwards}
+    #ztg-splash.ztg-skip{-webkit-animation:ztgFade .3s ease forwards;animation:ztgFade .3s ease forwards}
 
     .ztg-glow{position:absolute;width:340px;height:340px;border-radius:50%;
       background:radial-gradient(circle,rgba(255,216,77,.28) 0%,rgba(255,216,77,0) 65%);
       top:50%;left:50%;transform:translate(-50%,-62%) scale(.4);opacity:0;
+      -webkit-animation:ztgGlow 1.6s cubic-bezier(.22,1,.36,1) .3s forwards;
       animation:ztgGlow 1.6s cubic-bezier(.22,1,.36,1) .3s forwards}
 
     .ztg-stage{position:relative;display:flex;flex-direction:column;align-items:center;
+      -webkit-animation:ztgStageOut .45s cubic-bezier(.4,0,.2,1) 2.65s forwards;
       animation:ztgStageOut .45s cubic-bezier(.4,0,.2,1) 2.65s forwards}
 
     .ztg-tile-wrap{position:relative;width:96px;height:96px}
@@ -341,47 +537,68 @@
       display:flex;align-items:center;justify-content:center;
       box-shadow:0 22px 50px -12px rgba(20,6,60,.55),inset 0 -3px 0 rgba(84,38,200,.08);
       opacity:0;transform:scale(.4) rotate(-14deg);
+      -webkit-animation:ztgTileIn .8s cubic-bezier(.34,1.56,.64,1) .15s forwards;
       animation:ztgTileIn .8s cubic-bezier(.34,1.56,.64,1) .15s forwards}
     .ztg-tile svg{width:58px;height:58px;overflow:visible}
     .ztg-z{fill:none;stroke:#5426C8;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
       stroke-dasharray:42;stroke-dashoffset:42;
+      -webkit-animation:ztgDraw .6s cubic-bezier(.65,0,.35,1) .55s forwards;
       animation:ztgDraw .6s cubic-bezier(.65,0,.35,1) .55s forwards}
     .ztg-dot{fill:#FFD84D;transform-box:fill-box;transform-origin:center;transform:scale(0);
+      -webkit-animation:ztgDot .5s cubic-bezier(.34,1.56,.64,1) 1.05s forwards;
       animation:ztgDot .5s cubic-bezier(.34,1.56,.64,1) 1.05s forwards}
     .ztg-shine{position:absolute;inset:-20%;width:40%;
       background:linear-gradient(100deg,transparent 0%,rgba(255,255,255,.9) 50%,transparent 100%);
       transform:translateX(-260%) skewX(-18deg);
+      -webkit-animation:ztgShine .8s ease-in-out 1.95s forwards;
       animation:ztgShine .8s ease-in-out 1.95s forwards}
     .ztg-ring{position:absolute;inset:0;border-radius:28px;border:2px solid #FFD84D;opacity:0;
+      -webkit-animation:ztgRing .9s cubic-bezier(.22,1,.36,1) 1.1s forwards;
       animation:ztgRing .9s cubic-bezier(.22,1,.36,1) 1.1s forwards}
 
     .ztg-word{margin:26px 0 0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:34px;
       letter-spacing:-.03em;color:#fff;line-height:1;display:flex}
     .ztg-word span{display:inline-block;opacity:0;transform:translateY(16px);filter:blur(4px);
+      -webkit-animation:ztgLetter .55s cubic-bezier(.22,1,.36,1) forwards;
       animation:ztgLetter .55s cubic-bezier(.22,1,.36,1) forwards;
+      -webkit-animation-delay:calc(1.15s + var(--i) * 45ms);
       animation-delay:calc(1.15s + var(--i) * 45ms)}
     .ztg-word .ztg-y{color:#FFD84D}
 
     .ztg-tag{margin:10px 0 0;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;
       text-transform:uppercase;color:rgba(255,255,255,.72);opacity:0;
+      -webkit-animation:ztgFadeUp .5s ease 1.7s forwards;
       animation:ztgFadeUp .5s ease 1.7s forwards}
 
     .ztg-bar{margin-top:22px;width:120px;height:3px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden;
-      opacity:0;animation:ztgFadeUp .4s ease 1.6s forwards}
+      opacity:0;-webkit-animation:ztgFadeUp .4s ease 1.6s forwards;animation:ztgFadeUp .4s ease 1.6s forwards}
     .ztg-bar i{display:block;height:100%;background:#FFD84D;border-radius:3px;transform:scaleX(0);transform-origin:left;
+      -webkit-animation:ztgBar 1.05s cubic-bezier(.65,0,.35,1) 1.65s forwards;
       animation:ztgBar 1.05s cubic-bezier(.65,0,.35,1) 1.65s forwards}
 
+    @-webkit-keyframes ztgGlow{to{opacity:1;-webkit-transform:translate(-50%,-62%) scale(1);transform:translate(-50%,-62%) scale(1)}}
     @keyframes ztgGlow{to{opacity:1;transform:translate(-50%,-62%) scale(1)}}
+    @-webkit-keyframes ztgTileIn{to{opacity:1;-webkit-transform:scale(1) rotate(0);transform:scale(1) rotate(0)}}
     @keyframes ztgTileIn{to{opacity:1;transform:scale(1) rotate(0)}}
+    @-webkit-keyframes ztgDraw{to{stroke-dashoffset:0}}
     @keyframes ztgDraw{to{stroke-dashoffset:0}}
+    @-webkit-keyframes ztgDot{60%{-webkit-transform:scale(1.35);transform:scale(1.35)}100%{-webkit-transform:scale(1);transform:scale(1)}}
     @keyframes ztgDot{60%{transform:scale(1.35)}100%{transform:scale(1)}}
+    @-webkit-keyframes ztgShine{to{-webkit-transform:translateX(360%) skewX(-18deg);transform:translateX(360%) skewX(-18deg)}}
     @keyframes ztgShine{to{transform:translateX(360%) skewX(-18deg)}}
+    @-webkit-keyframes ztgRing{0%{opacity:.8;-webkit-transform:scale(1);transform:scale(1)}100%{opacity:0;-webkit-transform:scale(1.7);transform:scale(1.7)}}
     @keyframes ztgRing{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.7)}}
+    @-webkit-keyframes ztgLetter{to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0);filter:blur(0)}}
     @keyframes ztgLetter{to{opacity:1;transform:translateY(0);filter:blur(0)}}
+    @-webkit-keyframes ztgFadeUp{from{opacity:0;-webkit-transform:translateY(6px);transform:translateY(6px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}
     @keyframes ztgFadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    @-webkit-keyframes ztgBar{to{-webkit-transform:scaleX(1);transform:scaleX(1)}}
     @keyframes ztgBar{to{transform:scaleX(1)}}
+    @-webkit-keyframes ztgStageOut{to{opacity:0;-webkit-transform:scale(.9);transform:scale(.9)}}
     @keyframes ztgStageOut{to{opacity:0;transform:scale(.9)}}
+    @-webkit-keyframes ztgIris{to{-webkit-clip-path:circle(0% at 50% 46%);clip-path:circle(0% at 50% 46%)}}
     @keyframes ztgIris{to{clip-path:circle(0% at 50% 46%)}}
+    @-webkit-keyframes ztgFade{to{opacity:0}}
     @keyframes ztgFade{to{opacity:0}}
 
     @media (prefers-reduced-motion:reduce){
@@ -460,7 +677,7 @@
        - Clean crisp white content surface below
        - Contrasting Brand Purple (#5426C8) primary CTA
   ====================================================================== -->
-  <div id="onboarding-screen" role="dialog" aria-modal="true" aria-label="Welcome to Zatpatgo" class="fixed inset-0 z-[60] hidden flex-col bg-white overflow-y-auto">
+  <div id="onboarding-screen" role="dialog" aria-modal="true" aria-label="Welcome to Zatpatgo" class="fixed inset-0 z-[60] hidden flex-col bg-white overflow-y-auto animate-fade-up">
     <!-- Top Dominant Illustration / Brand Canvas (#FFD84D) -->
     <div class="bg-brand-yellow text-brand-ink px-6 pt-safe pb-8 tablet:py-12 flex flex-col items-center text-center relative shrink-0">
       <div class="w-full max-w-lg flex items-center justify-between mb-6 pt-2">
@@ -712,7 +929,7 @@
   <!-- =====================================================================
        FLOATING CART BAR (Brand Orange CTA Accent for Cart Entry)
   ====================================================================== -->
-  <div id="floating-cart-bar" class="fixed floating-cart-pos left-4 right-4 desktop:left-auto desktop:right-8 desktop:w-[360px] z-30 transform translate-y-32 opacity-0 pointer-events-none transition-all duration-200 ease-out">
+  <div id="floating-cart-bar" class="fixed floating-cart-pos left-4 right-4 desktop:left-auto desktop:right-8 desktop:w-[360px] z-30 transform translate-y-32 opacity-0 pointer-events-none">
     <button onclick="openCartDrawer()" class="w-full h-14 bg-brand-ink hover:bg-brand-deep text-white rounded-2xl px-4 shadow-float flex items-center justify-between btn-tactile">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-xl bg-brand-orange flex items-center justify-center font-editorial font-extrabold text-white text-xs" id="float-bar-qty">
@@ -809,9 +1026,9 @@
        GLOBAL SEARCH MODAL (SEARCH PERSONALITY — BRAND ORANGE ACCENTS)
   ====================================================================== -->
   <div id="search-modal" role="dialog" aria-modal="true" aria-label="Search dishes and stores" class="fixed inset-0 z-50 hidden">
-    <div onclick="closeSearchModal()" class="absolute inset-0 bg-brand-ink/45 ios-backdrop"></div>
+    <div id="search-modal-backdrop" onclick="closeSearchModal()" class="absolute inset-0 bg-brand-ink/45 ios-backdrop"></div>
     <div class="relative max-w-2xl mx-auto mt-3 tablet:mt-14 px-3 tablet:px-0 pt-safe">
-      <div class="bg-white rounded-2xl shadow-2xl border border-brand-hairline overflow-hidden animate-modal-zoom">
+      <div id="search-modal-card" class="bg-white rounded-2xl shadow-2xl border border-brand-hairline overflow-hidden animate-modal-zoom">
         <div class="p-3.5 border-b border-brand-hairline flex items-center gap-3 bg-brand-canvas/60">
           <svg class="w-5 h-5 text-brand-orange shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="7"></circle>
@@ -834,7 +1051,7 @@
        - Subtle Brand Yellow (#FFD84D) secondary accent for supporting kitchen badge
   ====================================================================== -->
   <div id="product-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden items-end tablet:items-center justify-center">
-    <div onclick="closeProductModal()" class="absolute inset-0 bg-brand-ink/50 ios-backdrop"></div>
+    <div id="product-modal-backdrop" onclick="closeProductModal()" class="absolute inset-0 bg-brand-ink/50 ios-backdrop"></div>
     <div id="product-modal-card" class="relative w-full tablet:max-w-lg bg-white rounded-t-2xl tablet:rounded-2xl overflow-hidden shadow-2xl z-10 max-h-[90vh] flex flex-col animate-sheet-up tablet:animate-modal-zoom"></div>
   </div>
 
@@ -842,7 +1059,7 @@
        ADMIN CATALOG & OFFERS EDITOR MODAL (PROTECTED)
   ====================================================================== -->
   <div id="catalog-editor-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden items-end tablet:items-center justify-center">
-    <div onclick="closeCatalogEditor()" class="absolute inset-0 bg-brand-ink/50 ios-backdrop"></div>
+    <div id="catalog-editor-backdrop" onclick="closeCatalogEditor()" class="absolute inset-0 bg-brand-ink/50 ios-backdrop"></div>
     <div id="catalog-editor-card" class="relative w-full tablet:max-w-2xl bg-white rounded-t-2xl tablet:rounded-2xl overflow-hidden shadow-2xl z-10 max-h-[92vh] flex flex-col animate-sheet-up tablet:animate-modal-zoom"></div>
   </div>
 
@@ -853,8 +1070,8 @@
        - Zero unnecessary coloured backgrounds
   ====================================================================== -->
   <div id="otp-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 hidden items-end tablet:items-center justify-center">
-    <div onclick="closeOtpModal()" class="absolute inset-0 bg-brand-ink/45 ios-backdrop"></div>
-    <div class="relative w-full tablet:max-w-md bg-white rounded-t-2xl tablet:rounded-2xl p-6 tablet:p-7 shadow-2xl border border-brand-hairline z-10 pb-safe animate-sheet-up tablet:animate-modal-zoom">
+    <div id="otp-modal-backdrop" onclick="closeOtpModal()" class="absolute inset-0 bg-brand-ink/45 ios-backdrop"></div>
+    <div id="otp-modal-card" class="relative w-full tablet:max-w-md bg-white rounded-t-2xl tablet:rounded-2xl p-6 tablet:p-7 shadow-2xl border border-brand-hairline z-10 pb-safe animate-sheet-up tablet:animate-modal-zoom">
       
       <!-- Clean Header with Preserved Logo & Single Brand Purple Accent -->
       <div class="flex items-center justify-between pb-4 mb-5 border-b border-brand-hairline">
@@ -939,7 +1156,7 @@
        ORDER DETAIL MODAL
   ====================================================================== -->
   <div id="order-detail-modal" class="fixed inset-0 z-50 hidden items-end tablet:items-center justify-center">
-    <div onclick="closeOrderDetailModal()" class="absolute inset-0 bg-brand-ink/45 ios-backdrop"></div>
+    <div id="order-detail-backdrop" onclick="closeOrderDetailModal()" class="absolute inset-0 bg-brand-ink/45 ios-backdrop"></div>
     <div id="order-detail-card" class="relative w-full tablet:max-w-lg bg-white rounded-t-2xl tablet:rounded-2xl p-6 shadow-2xl z-10 max-h-[90vh] overflow-y-auto pb-safe animate-sheet-up tablet:animate-modal-zoom"></div>
   </div>
 
@@ -948,7 +1165,7 @@
   ====================================================================== -->
   <script>
     // -----------------------------------------------------------------------
-    // 0. TACTILE HAPTIC FEEDBACK UTILITY
+    // 0. TACTILE HAPTIC FEEDBACK UTILITY & MOBILE ANIMATION HELPERS
     // -----------------------------------------------------------------------
     let lastHapticTimestamp = 0;
     let iosSwitchLabel = null;
@@ -957,6 +1174,41 @@
       typeof navigator !== 'undefined' &&
       (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+
+    /**
+     * Reliably restarts CSS keyframe animations on iOS Safari & Android Chrome
+     * even after innerHTML updates or repeated class toggles.
+     */
+    function triggerElementAnimation(el, animClass) {
+      if (!el) return;
+      el.classList.remove('animate-fade-up', 'animate-slide-push', 'animate-slide-pop', 'animate-sheet-up', 'animate-modal-zoom', 'animate-pop');
+      el.style.webkitAnimation = 'none';
+      el.style.animation = 'none';
+      void el.offsetWidth; // Force clean reflow for WebKit/Blink
+      el.style.webkitAnimation = '';
+      el.style.animation = '';
+      el.classList.add(animClass);
+    }
+
+    /**
+     * Smoothly closes modal/bottom-sheet overlays with GPU-accelerated exit
+     * transitions before hiding the element.
+     */
+    function animateOverlayClose(modalEl, backdropEl, cardEl, isSheetOnMobile = true) {
+      if (!modalEl || modalEl.classList.contains('hidden')) return;
+      if (backdropEl) backdropEl.classList.add('ztg-overlay-closing');
+      if (cardEl) {
+        const isDesktop = window.innerWidth >= 768;
+        cardEl.classList.add(isSheetOnMobile && !isDesktop ? 'ztg-sheet-closing' : 'ztg-modal-closing');
+      }
+      setTimeout(() => {
+        modalEl.classList.add('hidden');
+        modalEl.classList.remove('flex');
+        if (backdropEl) backdropEl.classList.remove('ztg-overlay-closing');
+        if (cardEl) cardEl.classList.remove('ztg-sheet-closing', 'ztg-modal-closing');
+        syncBodyScrollLock();
+      }, 210);
+    }
 
     function ensureIosHapticSwitch() {
       if (iosSwitchLabel || typeof document === 'undefined' || !document.body) return iosSwitchLabel;
@@ -1059,6 +1311,7 @@
       if (!el) return;
       el.classList.remove('hidden');
       el.classList.add('flex');
+      triggerElementAnimation(el, 'animate-fade-up');
       document.body.style.overflow = 'hidden';
     }
 
@@ -1067,9 +1320,12 @@
       localStorage.setItem('zatpatgo_onboarded_v1', 'true');
       const el = document.getElementById('onboarding-screen');
       if (!el) return;
-      el.classList.add('hidden');
-      el.classList.remove('flex');
-      syncBodyScrollLock();
+      el.classList.add('ztg-overlay-closing');
+      setTimeout(() => {
+        el.classList.add('hidden');
+        el.classList.remove('flex', 'ztg-overlay-closing');
+        syncBodyScrollLock();
+      }, 210);
     }
 
     // -----------------------------------------------------------------------
@@ -1649,6 +1905,8 @@
       `;
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      const isDesktop = window.innerWidth >= 768;
+      triggerElementAnimation(card, isDesktop ? 'animate-modal-zoom' : 'animate-sheet-up');
       syncBodyScrollLock();
       setTimeout(() => {
         const inp = document.getElementById('admin-passcode-input');
@@ -1987,9 +2245,7 @@
 
     function animateCartBadges() {
       document.querySelectorAll('[data-cart-badge], #float-bar-qty, #float-bar-total').forEach(el => {
-        el.classList.remove('animate-pop');
-        void el.offsetWidth;
-        el.classList.add('animate-pop');
+        triggerElementAnimation(el, 'animate-pop');
       });
     }
 
@@ -2067,7 +2323,7 @@
       }
 
       container.innerHTML = `
-        <div class="flex items-center gap-2 min-w-0">
+        <div class="flex items-center gap-2 min-w-0 animate-fade-up">
           <button onclick="navigateBack()" aria-label="Go Back" class="w-10 h-10 rounded-xl bg-brand-canvas border border-brand-hairline hover:border-brand-purple/40 flex items-center justify-center text-brand-ink shrink-0 btn-tactile">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
@@ -2163,6 +2419,7 @@
 
       document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
         const isCurrent = btn.dataset.mobileTab === activeTab;
+        const wasCurrent = btn.getAttribute('aria-current') === 'page';
         const pill = btn.querySelector('.nav-pill');
         const label = btn.querySelector('.nav-label');
         if (isCurrent) {
@@ -2171,6 +2428,16 @@
           btn.classList.add('text-brand-purple');
           if (pill) {
             pill.classList.add('bg-brand-purple/10', 'text-brand-purple');
+            if (!wasCurrent) {
+              const svg = pill.querySelector('svg');
+              if (svg) {
+                svg.style.webkitAnimation = 'none';
+                svg.style.animation = 'none';
+                void svg.offsetWidth;
+                svg.style.webkitAnimation = '';
+                svg.style.animation = '';
+              }
+            }
           }
           if (label) {
             label.classList.add('font-bold');
@@ -2946,10 +3213,12 @@
     }
 
     function closeOrderDetailModal() {
-      const modal = document.getElementById('order-detail-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      syncBodyScrollLock();
+      animateOverlayClose(
+        document.getElementById('order-detail-modal'),
+        document.getElementById('order-detail-backdrop'),
+        document.getElementById('order-detail-card'),
+        true
+      );
     }
 
     function reorderItems(orderId) {
@@ -3431,6 +3700,8 @@
 
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      const isDesktop = window.innerWidth >= 768;
+      triggerElementAnimation(card, isDesktop ? 'animate-modal-zoom' : 'animate-sheet-up');
       syncBodyScrollLock();
     }
 
@@ -3497,10 +3768,14 @@
 
     function closeCatalogEditor() {
       const modal = document.getElementById('catalog-editor-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      syncBodyScrollLock();
-      renderApp();
+      if (modal.classList.contains('hidden')) return;
+      animateOverlayClose(
+        modal,
+        document.getElementById('catalog-editor-backdrop'),
+        document.getElementById('catalog-editor-card'),
+        true
+      );
+      setTimeout(() => renderApp(), 215);
     }
 
     function saveStoreMetadata(storeId) {
@@ -3840,9 +4115,11 @@
       const drawer = document.getElementById('cart-drawer');
       overlay.classList.remove('hidden');
       requestAnimationFrame(() => {
-        overlay.classList.remove('opacity-0');
-        drawer.classList.remove('translate-x-full');
-        syncBodyScrollLock();
+        requestAnimationFrame(() => {
+          overlay.classList.remove('opacity-0');
+          drawer.classList.remove('translate-x-full');
+          syncBodyScrollLock();
+        });
       });
     }
 
@@ -3854,7 +4131,7 @@
       setTimeout(() => {
         overlay.classList.add('hidden');
         syncBodyScrollLock();
-      }, 280);
+      }, 300);
     }
 
     function renderCartDrawer() {
@@ -3866,7 +4143,7 @@
         footer.classList.add('hidden');
         footer.innerHTML = '';
         body.innerHTML = `
-          <div style="padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));" class="flex-1 flex flex-col items-center justify-center text-center px-4 py-8 my-auto">
+          <div style="padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));" class="flex-1 flex flex-col items-center justify-center text-center px-4 py-8 my-auto animate-fade-up">
             <div class="max-w-[290px] w-full flex flex-col items-center">
               <div class="w-14 h-14 rounded-2xl bg-white border border-brand-hairline text-brand-orange flex items-center justify-center mb-4">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -3983,17 +4260,22 @@
     function openOtpModal() {
       triggerHaptic();
       const modal = document.getElementById('otp-modal');
+      const card = document.getElementById('otp-modal-card');
       resetOtpToPhone();
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      const isDesktop = window.innerWidth >= 768;
+      triggerElementAnimation(card, isDesktop ? 'animate-modal-zoom' : 'animate-sheet-up');
       syncBodyScrollLock();
     }
 
     function closeOtpModal() {
-      const modal = document.getElementById('otp-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      syncBodyScrollLock();
+      animateOverlayClose(
+        document.getElementById('otp-modal'),
+        document.getElementById('otp-modal-backdrop'),
+        document.getElementById('otp-modal-card'),
+        true
+      );
     }
 
     function resetOtpToPhone() {
@@ -4018,7 +4300,9 @@
       document.getElementById('otp-display-phone').textContent = `+91 ${digits}`;
 
       document.getElementById('otp-step-phone').classList.add('hidden');
-      document.getElementById('otp-step-code').classList.remove('hidden');
+      const stepCode = document.getElementById('otp-step-code');
+      stepCode.classList.remove('hidden');
+      triggerElementAnimation(stepCode, 'animate-slide-push');
 
       const boxes = document.querySelectorAll('.otp-box');
       boxes.forEach(b => (b.value = ''));
@@ -4074,8 +4358,10 @@
     function openSearchModal() {
       triggerHaptic();
       const modal = document.getElementById('search-modal');
+      const card = document.getElementById('search-modal-card');
       const input = document.getElementById('search-input');
       modal.classList.remove('hidden');
+      triggerElementAnimation(card, 'animate-modal-zoom');
       syncBodyScrollLock();
       input.value = '';
       handleSearchInput('');
@@ -4083,8 +4369,12 @@
     }
 
     function closeSearchModal() {
-      document.getElementById('search-modal').classList.add('hidden');
-      syncBodyScrollLock();
+      animateOverlayClose(
+        document.getElementById('search-modal'),
+        document.getElementById('search-modal-backdrop'),
+        document.getElementById('search-modal-card'),
+        false
+      );
     }
 
     function handleSearchInput(query) {
@@ -4199,14 +4489,18 @@
 
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+      const isDesktop = window.innerWidth >= 768;
+      triggerElementAnimation(card, isDesktop ? 'animate-modal-zoom' : 'animate-sheet-up');
       syncBodyScrollLock();
     }
 
     function closeProductModal() {
-      const modal = document.getElementById('product-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      syncBodyScrollLock();
+      animateOverlayClose(
+        document.getElementById('product-modal'),
+        document.getElementById('product-modal-backdrop'),
+        document.getElementById('product-modal-card'),
+        true
+      );
     }
 
     // -----------------------------------------------------------------------
@@ -4247,12 +4541,15 @@
           break;
       }
 
-      if (state.transitionType === 'pop') {
-        const firstChild = root.firstElementChild;
-        if (firstChild) {
-          firstChild.classList.remove('animate-fade-up', 'animate-slide-push');
-          firstChild.classList.add('animate-slide-pop');
-        }
+      const firstChild = root.firstElementChild;
+      if (firstChild) {
+        const animClass =
+          state.transitionType === 'pop'
+            ? 'animate-slide-pop'
+            : state.transitionType === 'push'
+              ? 'animate-slide-push'
+              : 'animate-fade-up';
+        triggerElementAnimation(firstChild, animClass);
       }
       state.transitionType = 'fade';
 
